@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Graveyard of the Pumpkin King</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+</head>
+
+<body>
+    <div id=game></div>
+
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+    <script>
+        UnityLoader.compatibilityCheck = (e, t, r) => {
+            t()
+        }
+     </script>
+    <script>
+        var module = {}
+        UnityLoader.instantiate("game", "%UNITY_WEBGL_BUILD_URL%", module)
+        window.addEventListener("resize", resizeViewport)
+        resizeViewport()
+
+        function resizeViewport() {
+            const width = window.innerWidth
+            const height = window.innerHeight
+
+            const gameElement = document.getElementById("game")
+            gameElement.style.width = width + "px"
+            gameElement.style.height = height + "px"
+
+            if (game && game.Module && game.Module.setCanvasSize) {
+                game.Module.setCanvasSize(width, height)
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+Assembly-CSharp.csproj
+poke.sln
+.vscode/
+builds/
+Library/
+obj/
